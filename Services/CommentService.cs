@@ -5,7 +5,7 @@ namespace Posts_project.Services
 {
     public class CommentService
     {
-        static List<Comment> comments = new List<Comment>(){
+        static List<Comment> _comments = new List<Comment>(){
             new Comment
             { 
                 Id =1,
@@ -30,18 +30,18 @@ namespace Posts_project.Services
                 PostId =1,
                 CreatedAt =DateTime.Now
             }};
-        public List<Comment> Get() => comments;
+        public List<Comment> Get() => _comments;
 
-        public Comment GetById(int id) => comments.FirstOrDefault(x => x.Id == id);
+        public Comment GetById(int id) => _comments.FirstOrDefault(x => x.Id == id);
 
         public bool AddComment(Comment comment)
         {
-            comments.Add(comment);
+            _comments.Add(comment);
             return true;
         }
         public bool Update(int id, Comment comment)
         {
-            Comment existingCommentToUpdate = comments.FirstOrDefault(x => x.Id == id);
+            Comment existingCommentToUpdate = _comments.FirstOrDefault(x => x.Id == id);
             if (existingCommentToUpdate != null)
             {
                 existingCommentToUpdate.PostId = comment.PostId;
@@ -55,7 +55,7 @@ namespace Posts_project.Services
         }
         public bool Delete(int id)
         {
-            return  comments.Remove(comments.FirstOrDefault(x => x.Id == id));
+            return  _comments.Remove(_comments.FirstOrDefault(x => x.Id == id));
         }
     }
 }

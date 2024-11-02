@@ -13,12 +13,7 @@ namespace Posts_project.Services
                 Id = 1,
                 Name = "Category 3",
                 Description = "Description of Category 3",
-                Parent = new Category
-                {
-                    Id = 2,
-                    Name = "Category 2",
-                    Description = "Description of Category 1"
-                }
+                ParentID = 2
             }
         };
         public List<Category> Get() => _categories;
@@ -36,7 +31,7 @@ namespace Posts_project.Services
             if (existingCategoryToUpdate != null)
             {
                 existingCategoryToUpdate.Name = c.Name;
-                existingCategoryToUpdate.Parent = c.Parent;
+                existingCategoryToUpdate.ParentID = c.ParentID;
                 existingCategoryToUpdate.Id = c.Id;
                 existingCategoryToUpdate.Description = c.Description;
                 return true;
